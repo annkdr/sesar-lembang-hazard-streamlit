@@ -278,7 +278,7 @@ if halaman == "Beranda":
         kartu_mulai("Alur analisis")
         st.markdown(f"""
 1. **Deklusterisasi** — Gardner & Knopoff (1974) memisahkan gempa utama
-   dari gempa susulan, karena HPP mensyaratkan kejadian yang saling bebas.
+   dari gempa susulan.
 2. **Seleksi spasial** — hanya gempa dalam radius {fmt(BUFFER,0)} km dari
    trace sesar.
 3. **Magnitude of completeness** — Mc = {fmt(MC,1)}, batas bawah katalog
