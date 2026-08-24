@@ -698,8 +698,7 @@ Indonesia (PuSGeN, 2017).
 
 ##### Deklusterisasi
 Metode Gardner & Knopoff (1974) dengan jendela ruang-waktu bergantung
-magnitudo. Gempa susulan dihilangkan karena melanggar asumsi
-independensi pada proses Poisson.
+magnitudo. Gempa susulan dihilangkan.
 
 ##### Pemilihan radius buffer
 Radius {fmt(BUFFER,0)} km dipilih berdasarkan dua pertimbangan. Dari sisi
