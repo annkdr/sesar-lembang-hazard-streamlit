@@ -167,7 +167,7 @@ else:
 # --- Ambil parameter dari tabel ringkasan ---
 # parameter_gr_hpp.csv berbentuk dua kolom (nama parameter, nilai).
 # Fungsi ini mencari baris yang namanya cocok dengan pola teks, lalu
-# mengambil nilainya - persis seperti fungsi ambil() di versi R.
+# mengambil nilainya .                                         
 def ambil(pola, default=np.nan):
     col_nama = par_tab.columns[0]
     col_nilai = par_tab.columns[1]
@@ -207,9 +207,7 @@ TAHUN_MAX = int(katalog["tahun"].max()) if katalog["tahun"].notna().any() else 2
 # =====================================================================
 # BAGIAN 3 | FUNGSI INTI: LAJU DAN PROBABILITAS
 # =====================================================================
-# Sama seperti versi R - dihitung ulang dari parameter, bukan dibaca
-# dari tabel statis, supaya pengguna bisa memilih magnitudo dan horizon
-# waktu sembarang, bukan hanya nilai yang kebetulan ada di tabel.
+
 
 def laju(m):
     """Laju tahunan kejadian M >= m, model GR terpotong di Mmax."""
@@ -404,8 +402,6 @@ elif halaman == "Peta & Data":
         folium.PolyLine(garis, color=WARNA["aksen"], weight=4, opacity=0.9,
                         tooltip="Sesar Lembang").add_to(peta)
 
-    # Titik gempa. Radius eksponensial terhadap magnitudo, konsisten
-    # dengan versi R, supaya gempa besar langsung menonjol di peta.
     if len(d):
         if f_warna == "Magnitudo":
             nilai = d["mag"]
