@@ -2,14 +2,7 @@
 #  app.py  |  Dashboard Bahaya Seismik Sesar Lembang (versi Streamlit)
 # ---------------------------------------------------------------------
 #  Andini Dwi Kurnia Putri - Statistika, Universitas Padjadjaran
-#
-#  Desain dan rumus mengikuti persis versi bs4Dash/Shiny sebelumnya.
-#  Bedanya: tidak ada dependensi sf/terra sama sekali, karena geometri
-#  (trace_lonlat.csv, buffer_25km.geojson, jabar_kabupaten_ringkas.geojson)
-#  sudah dihitung sekali di R lewat 04_siapkan_geometri.R. Streamlit
-#  Cloud hanya perlu membaca file-file itu apa adanya - tidak perlu
-#  mengkompilasi apa pun, jadi tidak ada lagi error build seperti di
-#  shinyapps.io.
+
 # =====================================================================
 
 import math
@@ -25,8 +18,7 @@ from streamlit_folium import st_folium
 # =====================================================================
 # BAGIAN 0 | KONFIGURASI HALAMAN
 # =====================================================================
-# set_page_config WAJIB jadi perintah Streamlit pertama yang dijalankan,
-# sebelum st.apa pun yang lain - kalau tidak, akan error.
+
 st.set_page_config(
     page_title="Bahaya Seismik Sesar Lembang",
     page_icon="🌋",
@@ -41,8 +33,6 @@ WARNA = {
     "terang": "#F4F6F7",
 }
 
-# CSS ringan supaya tampilan lebih dekat ke gaya bs4Dash: header hijau
-# solid pada tiap card, dan value box dengan aksen warna.
 st.markdown(f"""
 <style>
     .block-container {{ padding-top: 1.5rem; }}
@@ -104,7 +94,6 @@ def kartu_selesai():
 # =====================================================================
 # BAGIAN 1 | KONFIGURASI SUMBER DATA
 # =====================================================================
-# GANTI dengan username GitHub Anda kalau berbeda.
 GH_USER   = "annkdr"
 GH_REPO   = "sesar-lembang-hazard"
 GH_BRANCH = "main"
@@ -115,10 +104,6 @@ BASE_URL = f"https://raw.githubusercontent.com/{GH_USER}/{GH_REPO}/{GH_BRANCH}/d
 # =====================================================================
 # BAGIAN 2 | PEMUATAN DATA
 # =====================================================================
-# @st.cache_data menyimpan hasil di memori. Tanpa ini, SETIAP interaksi
-# pengguna (geser slider, klik tab) akan mengunduh ulang semua CSV dari
-# GitHub - lambat dan boros kuota. Dengan cache, unduhan hanya terjadi
-# sekali per sesi kecuali data sumbernya berubah.
 
 @st.cache_data(show_spinner=False)
 def baca_csv(nama, wajib=True):
